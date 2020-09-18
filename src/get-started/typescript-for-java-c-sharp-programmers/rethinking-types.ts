@@ -1,10 +1,10 @@
 interface Pointlike {
-    x: number;
-    y: number;
+  x: number;
+  y: number;
 }
 
 interface Named {
-    name: string;
+  name: string;
 }
 
 function printPoint(point: Pointlike) {
