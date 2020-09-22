@@ -30,11 +30,11 @@ carBoat.drive(); // Driving a boat.
 console.log(carBoat instanceof Car); // false.
 console.log(carBoat instanceof Boat); // true.
 
-// However, there will be some "conversion" happening when assigning a class object to a
+// However, there will be some "masking" happening when assigning a class object to a
 // typed/interfaced variable.
-const boatOne: GenericBoat = new Boat();
+const boatOne = new Boat();
+const boatTwo: GenericBoat = boatOne;
+console.log(boatOne === boatTwo); // true.
+console.log(boatOne.engine); // test-engine.
 // Output: TSError: Property 'engine' does not exist on type 'GenericBoat'.
-// console.log(boatOne.engine);
-
-const boatTwo = new Boat();
-console.log(boatTwo.engine); // test-engine.
+// console.log(boatTwo.engine);
