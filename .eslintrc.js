@@ -18,6 +18,7 @@ module.exports = {
   ],
   rules: {
     'class-methods-use-this': 0,
+    'func-names': 0,
     'max-classes-per-file': 0,
     'no-console': 0,
     'no-undef': 0,
