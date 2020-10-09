@@ -24,6 +24,7 @@ module.exports = {
     'no-undef': 0,
     'no-underscore-dangle': 0,
     'no-unused-expressions': 0,
+    'prefer-const': 0,
     'comma-dangle': 0,
     '@typescript-eslint/comma-dangle': ['error', 'always-multiline'],
     'no-shadow': 0,
