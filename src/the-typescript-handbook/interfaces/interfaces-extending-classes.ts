@@ -1,3 +1,54 @@
+class TestClass {
+  print(): void {
+    console.log('Hello, world!');
+  }
+}
+
+/*
+ * When an interface type extends a class type it inherits the members of the class but not
+ * their implementations.
+ */
+interface printableInterface extends TestClass {
+  id: number;
+}
+
+const printableOne: printableInterface = {
+  id: 1,
+
+  print() {
+    console.log('Hi! I have to define my own `print()`.');
+  },
+};
+/*
+ * TSError: Property 'print' is missing in type '{ id: number; }' but required in type
+ * 'printableInterface'.
+ */
+// const printableTwo: printableInterface = {
+//   id: 2,
+// };
+/*
+ * @see https://stackoverflow.com/questions/12761607/typescript-void-return-type-converted-to-any-type
+ */
+const printableThree: printableInterface = {
+  id: 3,
+
+  print(): string {
+    return 'I have a different return type. This is usually illegal too, but I get away from it '
+      + 'because the return type of the interfaced method is `void`.';
+  },
+};
+console.log(printableThree.print());
+/*
+ * TSError: Type '(message: string) => void' is not assignable to type '() => void'.
+ */
+// const printableFour: printableInterface = {
+//   id: 4,
+//
+//   print(message: string) {
+//     console.log(`I change the parameter list with ${message}.`);
+//   },
+// };
+
 class Control {
   private state: any;
 
@@ -10,10 +61,6 @@ class Control {
   }
 }
 
-/*
- * When an interface type extends a class type it inherits the members of the class but not
- * their implementations.
- */
 interface SelectableControl extends Control {
   select(): void;
 }
