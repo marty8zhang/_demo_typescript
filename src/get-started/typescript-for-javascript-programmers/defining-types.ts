@@ -98,14 +98,15 @@ enum Colour {
   Cyan,
   White,
   // No error thrown for non-numeric values.
-  // The name call be used normally, but you can't search for the name using the value.
+  // The name can be used normally, but you can't search for the name using the value.
   Invalid = 'test',
   // If the same value has been (explicitly/implicitly) assign more than once, the last one on the
   // list will override its former(s).
   ReplacedMagenta = 9,
 }
 console.log(Colour.Red); // 0.
-console.log(Colour.Blue); // 4.
+/* eslint-disable-next-line */
+console.log(Colour['Blue']); // 4.
 console.log(Colour.Yellow); // 5.
 console.log(Colour.Cyan); // 10.
 console.log(Colour.White); // 11.
@@ -113,9 +114,11 @@ const myColour: Colour = Colour.Blue;
 console.log(myColour); // 4.
 const colourName: string = Colour[10];
 console.log(colourName); // Cyan.
-console.log(Colour[2]); // undefined.
-/* eslint-disable */
-console.log(Colour.Invalid); // test.
-console.log(Colour['test']); // undefined.
-/* eslint-enable */
 console.log(Colour[9]); // ReplacedMagenta.
+console.log(Colour[2]); // undefined.
+/* eslint-disable-next-line */
+console.log(Colour.Invalid); // test.
+/*
+ * TSError: Element implicitly has an 'any' type because index expression is not of type 'number'.
+ */
+// console.log(Colour['test']);

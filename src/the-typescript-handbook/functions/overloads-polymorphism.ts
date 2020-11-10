@@ -49,8 +49,8 @@ console.log(sum([7, 8, 9])); // 24.
  */
 function convert(number: number, type: string): string;
 // function convert(number: number, type: string): number; // This has no effect and is redundant.
-function convert(number: number, converter: (number) => any): any;
-function convert(number: number, type: string|((number) => any)): any {
+function convert(number: number, converter: (number: number) => any): any;
+function convert(number: number, type: string|((number: number) => any)): any {
   if (type === 'string') {
     return `${number}`;
   }

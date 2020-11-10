@@ -13,7 +13,7 @@ class Boat {
 }
 
 interface GenericBoat {
-  drive();
+  drive(): void;
 }
 
 // No error thrown. OO developers: Okay, probably some kind of auto type conversion happened?

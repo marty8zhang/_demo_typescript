@@ -53,7 +53,7 @@ interface GenericInterface<Type> {
 }
 
 class StringClass {
-  _value: string;
+  _value = '';
 
   set(value: string): void {
     this._value = value;
@@ -65,5 +65,5 @@ class StringClass {
 }
 
 const genericInterface1: GenericInterface<string> = new StringClass();
-// TSError: Type 'StringClass' is not assignable to type 'Backpack<number>'.
+// TSError: Type 'StringClass' is not assignable to type 'GenericInterface<number>'.
 // const genericInterface2: GenericInterface<number> = new StringClass();

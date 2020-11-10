@@ -12,4 +12,4 @@ function sum(
 console.log(sum(1, 2)); // 3.
 console.log(sum(3, 4, 5, 6)); // 18.
 
-const mySum: (a, b, ...rest) => number = sum;
+const mySum: (a: number, b: number, ...rest: number[]) => number = sum;

@@ -16,8 +16,8 @@ function printName(x: Named) {
 }
 
 /*
- * The fields can be assigned with `undefined` or `null`, or be deleted and the object can still be
- * deemed as satisfying the interfaces.
+ * In non-strict mode, the fields can be assigned with `undefined` or `null`, or be deleted and
+ * the object can still be deemed as satisfying the interfaces.
  * Missing out of the fields or mis-typed them with non-`undefined` and non-`null` values on the
  * other hand aren't acceptable.
  */
@@ -29,8 +29,8 @@ const obj = {
 printPoint(obj); // x = 1, y = 2.
 printName(obj); // Hello, Origin.
 
-obj.x = null;
-obj.y = undefined;
-delete obj.name;
-printPoint(obj); // x = null, y = undefined.
-printName(obj); // Hello, undefined.
+// obj.x = null;
+// obj.y = undefined;
+// delete obj.name;
+// printPoint(obj); // x = null, y = undefined.
+// printName(obj); // Hello, undefined.

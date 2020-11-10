@@ -6,15 +6,15 @@
  */
 let myAdd: (x: number, y: number) => number;
 
-function add(numberOne, numberTwo) {
+function add(numberOne: number, numberTwo: number) {
   return numberOne + numberTwo;
 }
 myAdd = add;
 console.log(myAdd(1, 2)); // 3.
 /*
- * Note that `undefined` and `null` can still be assigned to any type.
+ * Note that `undefined` and `null` can still be assigned to any type in non-strict mode.
  */
-console.log(myAdd(undefined, null)); // NaN.
+// console.log(myAdd(undefined, null)); // NaN.
 
 function illegalAdd(x: number, y: number) {
   return `${x + y}`;
@@ -24,6 +24,20 @@ function illegalAdd(x: number, y: number) {
  * '(x: number, y: number) => number'.
  */
 // myAdd = illegalAdd;
+
+/*
+ * Another way of declaring a function type.
+ */
+let myAdd2: { (x: number, y: number): number; } = add;
+
+/*
+ * Yet another way of declaring a function type, or in technically speaking, declaring an
+ * interface for a function.
+ */
+interface Add {
+  (x: number, y: number): number;
+}
+let myAdd3: Add = add;
 
 /*
  * Even though the return type isn't declared, TypeScript will still automatically determine

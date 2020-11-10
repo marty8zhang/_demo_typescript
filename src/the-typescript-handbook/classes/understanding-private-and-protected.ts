@@ -1,14 +1,14 @@
 class PrivateFieldCompatibilityTestClassOne {
-  private privateField: string;
+  private privateField = '1';
 }
 class PrivateFieldCompatibilityTestClassTwo {
-  private privateField: string;
+  private privateField = '2';
 }
 class ProtectedFieldCompatibilityTestClassOne {
-  protected protectedField: number;
+  protected protectedField = 3;
 }
 class ProtectedFieldCompatibilityTestClassTwo {
-  protected protectedField: number;
+  protected protectedField = 4;
 }
 let privateFieldCompatibilityTestClassOne = new PrivateFieldCompatibilityTestClassOne();
 let privateFieldCompatibilityTestClassTwo = new PrivateFieldCompatibilityTestClassTwo();

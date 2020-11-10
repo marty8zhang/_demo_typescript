@@ -73,7 +73,7 @@ console.log(testThisParameter.testUnusableThis('Will this work?'));
 testThisParameter.testUsableThis('This works.');
 
 class UnusableThisClass {
-  handlers = [];
+  handlers: { (this: void, message: string): void; }[] = [];
 
   message = 'Start handling...';
 
@@ -92,9 +92,10 @@ const unusableThisClass = new UnusableThisClass();
 /*
  * Object methods passed around like this and called outside of the original object's context
  * will lose its concept of `this`.
- * `run()` Output: undefined: Start handling...
+ * `run()` Output (while trying to call the below `testThisParameter.testUsableThis`):
+ * TypeError: Cannot read property 'id' of undefined.
  */
-unusableThisClass.addHandler(testThisParameter.testUsableThis);
+// unusableThisClass.addHandler(testThisParameter.testUsableThis);
 /*
  * Hence, we'll need to (re-)bind `this` to its original scope.
  * `run()` Output: 1: Start handling...

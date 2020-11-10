@@ -2,18 +2,26 @@ interface StringArray {
   /*
    * This syntax is called index Signature. The name - index - here has no effect on its usage,
    * you can name it whatever you like.
-   * The below line states that when (not necessarily) a `StringArray` is indexed with a number,
-   * it will return a string.
+   * The below line states that when a `StringArray` is indexed with a number, it must return a
+   * string. Note: In strict mode, you're not allowed to use a non-numeric index/key; however, in
+   * non-strict mode, you can.
    */
   [index: number]: string;
 }
 
 const stringArrayOne: StringArray = ['Apple', 'Banana'];
 console.log(stringArrayOne[0]); // Apple.
-// stringArrayOne[2] = true; // TSError: Type 'boolean' is not assignable to type 'string'.
-// Non-number index however is not restricted, hence no error thrown.
-stringArrayOne['test'] = 1; // eslint-disable-line
-console.log(stringArrayOne); // [ 'Apple', 'Banana', test: 1 ].
+/*
+ * TSError: Type 'boolean' is not assignable to type 'string'.
+ */
+// stringArrayOne[2] = true;
+/*
+ * Strict Mode: TSError: Element implicitly has an 'any' type because index expression is not of
+ * type 'number'.
+ * Non-Strict Mode: No error thrown.
+ */
+// stringArrayOne['test'] = 1;
+// console.log(stringArrayOne); // Non-strict mode output: [ 'Apple', 'Banana', test: 1 ].
 
 interface Animal {
   name: string;
@@ -60,7 +68,6 @@ const stringArrayTwo: ReadonlyStringArray = ['Alice', 'Bob'];
 // TSError: Index signature in type 'ReadonlyStringArray' only permits reading.
 // stringArrayTwo[0] = 'John';
 // stringArrayTwo[2] = 'Mallory';
-stringArrayTwo['test'] = 'It still works.' // eslint-disable-line
 
 interface ReadonlyPropertiesInterface {
   readonly [propertyName: string]: any;
