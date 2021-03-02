@@ -40,13 +40,17 @@ const excessPropertyChecksFour: ExcessPropertyChecksInterface = {
   otherField: 1.1,
 } as ExcessPropertyChecksInterface;
 
-// Index signatures.
+/*
+ * A better approach might be to add a string index signature if you’re sure that the object can
+ * have some extra properties.
+ * See "Indexable Types" for more details.
+ */
 interface IndexSignatureInterface {
   optionalFieldOne?: number;
   optionalFieldTwo?: string;
   [propName: string]: any;
 }
 // No error thrown.
-const indexSignatureOne = {
+const indexSignatureOne: IndexSignatureInterface = {
   otherField: 1.1,
 };
